@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+             xmlns:local="clr-namespace:TabViewVirtualization"
+             x:Class="TabViewVirtualization.MainPage">
+
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Padding="12">
+        <tabView:SfTabView x:Name="tabView" EnableVirtualization="True" IndicatorPlacement="Fill">
+            <tabView:SfTabItem Header="Home">
+                <tabView:SfTabItem.Content>
+                    <CollectionView
+                        ItemsSource="{Binding HomeItems}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                    <Grid Padding="12">
+                                        <Label
+                                            Text="{Binding}"
+                                            FontSize="16"
+                                            TextColor="#222"/>
+                                    </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Header="Tasks">
+                <tabView:SfTabItem.Content>
+                    <CollectionView
+                        ItemsSource="{Binding TaskItems}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                    <Grid Padding="12">
+                                        <Label
+                                            Text="{Binding}"
+                                            FontSize="16"
+                                            TextColor="#222"/>
+                                    </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Header="Reports">
+                <tabView:SfTabItem.Content>
+                    <CollectionView
+                        ItemsSource="{Binding ReportItems}"
+                        VerticalScrollBarVisibility="Always">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="12" ColumnDefinitions="*,Auto" BackgroundColor="#FAFAFA" Margin="0,0,0,8">
+                                    <Label
+                                        Grid.Column="0"
+                                        Text="{Binding Title}"
+                                        FontAttributes="Bold"
+                                        TextColor="#333"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding Value}"
+                                        TextColor="#666"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+        </tabView:SfTabView>
+
+    </Grid>
+
+
+</ContentPage>
