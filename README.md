@@ -17,23 +17,24 @@ A sample application that demonstrates how to enable virtualization in the .NET 
 To enable virtualization and bind dynamic content to each tab, use the following code:
 
 ```xml
-   <ContentPage.BindingContext>
-    <local:MainPageViewModel />
-</ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
 
-    <tabView:SfTabView x:Name="tabView" EnableVirtualization="True" IndicatorPlacement="Fill">
-        <tabView:SfTabItem Header="Home">
+    <tabView:SfTabView x:Name="tabView"
+                   EnableVirtualization="True"
+                   IndicatorPlacement="Fill">
+
+        <tabView:SfTabItem Header="Reports">
             <tabView:SfTabItem.Content>
-                <CollectionView
-                    ItemsSource="{Binding HomeItems}">
+                <CollectionView ItemsSource="{Binding ReportItems}"
+                      VerticalScrollBarVisibility="Always">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                                <Grid Padding="12">
-                                    <Label
-                                        Text="{Binding}"
-                                        FontSize="16"
-                                        TextColor="#222"/>
-                                </Grid>
+                            <Grid Padding="12" ColumnDefinitions="*,Auto" BackgroundColor="#FAFAFA" Margin="0,0,0,8">
+                                <Label Grid.Column="0" Text="{Binding Title}" FontAttributes="Bold" TextColor="#333"/>
+                                <Label Grid.Column="1" Text="{Binding Value}" TextColor="#666"/>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -42,43 +43,13 @@ To enable virtualization and bind dynamic content to each tab, use the following
 
         <tabView:SfTabItem Header="Tasks">
             <tabView:SfTabItem.Content>
-                <CollectionView
-                    ItemsSource="{Binding TaskItems}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                                <Grid Padding="12">
-                                    <Label
-                                        Text="{Binding}"
-                                        FontSize="16"
-                                        TextColor="#222"/>
-                                </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                 <!-- Add suitable content related to your scenario -->
             </tabView:SfTabItem.Content>
         </tabView:SfTabItem>
 
-        <tabView:SfTabItem Header="Reports">
+        <tabView:SfTabItem Header="Contacts">
             <tabView:SfTabItem.Content>
-                <CollectionView
-                    ItemsSource="{Binding ReportItems}"
-                    VerticalScrollBarVisibility="Always">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Padding="12" ColumnDefinitions="*,Auto" BackgroundColor="#FAFAFA" Margin="0,0,0,8">
-                                <Label
-                                    Grid.Column="0"
-                                    Text="{Binding Title}"
-                                    FontAttributes="Bold"
-                                    TextColor="#333"/>
-                                <Label
-                                    Grid.Column="1"
-                                    Text="{Binding Value}"
-                                    TextColor="#666"/>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <!-- Add suitable content related to your scenario -->
             </tabView:SfTabItem.Content>
         </tabView:SfTabItem>
     </tabView:SfTabView>
