@@ -16,16 +16,9 @@ namespace TabViewVirtualization
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        public ObservableCollection<string> HomeItems { get; } = new();
-        public ObservableCollection<string> TaskItems { get; } = new();
         public ObservableCollection<ReportRow> ReportItems { get; } = new();
-
         public MainPageViewModel()
         {
-            HomeItems.Add("Welcome to the Home tab. Here you can find an overview of your application and quick access to essential features.");
-
-            TaskItems.Add("Manage your tasks efficiently. Add new tasks, track progress, and stay organized to meet your goals.");
 
             ReportItems.Add(new ReportRow { Title = "Sales (Q1)", Value = "₹12.4L" });
             ReportItems.Add(new ReportRow { Title = "Active Users", Value = "3,482" });
