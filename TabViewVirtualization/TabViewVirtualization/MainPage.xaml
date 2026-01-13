@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+             xmlns:local="clr-namespace:TabViewVirtualization"
+             x:Class="TabViewVirtualization.MainPage">
+
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <tabView:SfTabView x:Name="tabView"
+                   EnableVirtualization="True"
+                   IndicatorPlacement="Fill">
+
+        <tabView:SfTabItem Header="Reports">
+            <tabView:SfTabItem.Content>
+                <CollectionView ItemsSource="{Binding ReportItems}"
+                      VerticalScrollBarVisibility="Always">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="12" ColumnDefinitions="*,Auto" BackgroundColor="#FAFAFA" Margin="0,0,0,8">
+                                <Label Grid.Column="0" Text="{Binding Title}" FontAttributes="Bold" TextColor="#333"/>
+                                <Label Grid.Column="1" Text="{Binding Value}" TextColor="#666"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </tabView:SfTabItem.Content>
+        </tabView:SfTabItem>
+
+        <tabView:SfTabItem Header="Tasks">
+            <tabView:SfTabItem.Content>
+                <Grid Padding="12">
+                    <Label Text="Manage your tasks efficiently. Add new tasks, track progress, and stay organized to meet your goals." FontSize="16" TextColor="#222"/>
+                </Grid>
+            </tabView:SfTabItem.Content>
+        </tabView:SfTabItem>
+
+        <tabView:SfTabItem Header="Contacts">
+            <tabView:SfTabItem.Content>
+                <Grid Padding="12">
+                    <Label Text="Manage your contacts here. Search, view details, and quickly add, edit, call, or email people in your address book." FontSize="16" TextColor="#222"/>
+                </Grid>
+            </tabView:SfTabItem.Content>
+        </tabView:SfTabItem>
+
+    </tabView:SfTabView>
+
+</ContentPage>
